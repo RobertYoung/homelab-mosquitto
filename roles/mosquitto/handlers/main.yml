@@ -1,8 +1,20 @@
 ---
-# TODO: Implement mosquitto handlers
-# Example:
-# - name: Restart mosquitto
-#   ansible.builtin.systemd:
-#     name: mosquitto
-#     state: restarted
-#     daemon_reload: true
+- name: "Restart {{ mosquitto_service_name }}"
+  become: true
+  ansible.builtin.systemd:
+    name: "{{ mosquitto_service_name }}"
+    state: stopped
+  notify: Reload systemd
+
+- name: Reload systemd
+  become: true
+  ansible.builtin.systemd:
+    daemon_reload: true
+  notify: "Start {{ mosquitto_service_name }}"
+
+- name: "Start {{ mosquitto_service_name }}"
+  become: true
+  ansible.builtin.systemd:
+    name: "{{ mosquitto_service_name }}"
+    enabled: true
+    state: started

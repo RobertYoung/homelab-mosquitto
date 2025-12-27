@@ -1,7 +1,21 @@
 ---
-# TODO: Define default variables for mosquitto role
-# Example:
-# mosquitto_port: 1883
-# mosquitto_websocket_port: 9001
-# mosquitto_config_dir: /etc/mosquitto
-# mosquitto_data_dir: /var/lib/mosquitto
+mosquitto_service_name: mosquitto
+mosquitto_service_port: "1883"
+mosquitto_service_websocket_port: "9001"
+mosquitto_service_data_dir: /var/lib/mosquitto
+mosquitto_service_config_dir: /etc/mosquitto
+mosquitto_service_user: mosquitto
+mosquitto_service_domain: mosquitto.local.iamrobertyoung.co.uk
+mosquitto_service_container_name: mosquitto
+
+mosquitto_backup_cron: "*-*-* 04:00:00"
+mosquitto_backup_image_name: backup-toolkit
+mosquitto_backup_image_tag: local
+mosquitto_backup_from: /data
+mosquitto_backup_host: mosquitto.local.iamrobertyoung.co.uk
+mosquitto_backup_username: "home-assistant"
+mosquitto_backup_password: "password"
+mosquitto_backup_bucket_name: "home-server-backup.iamrobertyoung.co.uk"
+mosquitto_backup_aws_access_key: ""
+mosquitto_backup_aws_secret_access_key: ""
+mosquitto_backup_aws_region: eu-west-2

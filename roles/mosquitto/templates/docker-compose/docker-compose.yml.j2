@@ -1,0 +1,24 @@
+services:
+  mosquitto:
+    image: toke/mosquitto
+    container_name: mosquitto
+    volumes:
+      - mosquitto-data:/mqtt
+      - /etc/letsencrypt:/etc/letsencrypt
+    restart: unless-stopped
+    ports:
+      - '{{ mosquitto_service_port }}:1883'
+      - '{{ mosquitto_service_websocket_port }}:9001'
+
+  backup-toolkit:
+    container_name: backup-toolkit
+    image: backup-toolkit:local
+    command: sleep infinity
+    restart: unless-stopped
+    volumes:
+      - mosquitto-data:{{ mosquitto_backup_from }}
+    env_file:
+      - ./backup-toolkit.env
+
+volumes:
+  mosquitto-data:
