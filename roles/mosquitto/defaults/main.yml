@@ -1,0 +1,7 @@
+---
+# TODO: Define default variables for mosquitto role
+# Example:
+# mosquitto_port: 1883
+# mosquitto_websocket_port: 9001
+# mosquitto_config_dir: /etc/mosquitto
+# mosquitto_data_dir: /var/lib/mosquitto

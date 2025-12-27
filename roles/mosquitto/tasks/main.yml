@@ -1,0 +1,11 @@
+---
+# TODO: Implement mosquitto role tasks
+# Example structure:
+# - name: Include setup tasks
+#   ansible.builtin.import_tasks: setup.yml
+#
+# - name: Include mosquitto tasks
+#   ansible.builtin.import_tasks: mosquitto.yml
+#
+# - name: Include backup tasks
+#   ansible.builtin.import_tasks: backup.yml
